@@ -3,10 +3,10 @@ from fastapi import FastAPI, Form, Depends
 
 class SampleForm:
     def __init__(self,
-                username: str = Form(...),
-                password: str = Form(...)):
-        self.username = username
-        self.password = password
+                num1: int = Form(...),
+                num2: int = Form(...)):
+        self.num1 = num1
+        self.num2 = num2
 
 
 
@@ -18,5 +18,4 @@ def test():
 
 @app.post("/predict")
 async def predict(form: SampleForm = Depends()):
-    print(form)
-    return form
+    return form.num1 + form.num2
