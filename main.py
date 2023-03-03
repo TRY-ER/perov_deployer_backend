@@ -41,7 +41,8 @@ def predict_main(df):
     result_li = []
     for fold in range(num_folds):
         print(f"predicting for fold {fold} / {num_folds}")
-        model = joblib.load(f"./models/tabnet/{fold}_tabnet_reg_adam/{fold}_model.z")
+        model = joblib.load(f"./models/xgboost_old/{fold}_xg_boost_reg_no_optim/{fold}_model.z")
+        print(df.shape)
         result = model.predict(df)
         print(result)
         result_li.append(result)
