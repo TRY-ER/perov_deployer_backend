@@ -6,6 +6,7 @@ import numpy as np
 import os
 from own.preprocess import Preprocess
 import sklearn
+# import torc
 
 
 col_data = joblib.load("col_bool_mod.z")
@@ -37,11 +38,12 @@ async def provide(data: list):
 
 
 def predict_main(df):
-    num_folds =  len(os.listdir("./models/"))
+    num_folds =  len(os.listdir("./models/SVR")) - 3
     result_li = []
     for fold in range(num_folds):
         print(f"predicting for fold {fold} / {num_folds}")
-        model = joblib.load(f"./models/xgboost_old/{fold}_xg_boost_reg_no_optim/{fold}_model.z")
+        model = joblib.load(f"./models/SVR/{fold}_SVR_non_syn_no_optim/{fold}_model.z")
+        # model = torch.load(f"./models/tabnet/{fold}_tabnet_reg_adam/{fold}_model.z",map_location=torch.device("cpu"))
         print(df.shape)
         result = model.predict(df)
         print(result)

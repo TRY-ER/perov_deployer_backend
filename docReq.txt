@@ -5,5 +5,5 @@ uvicorn==0.20.0
 numpy
 scikit-learn
 xgboost
-pytorch-tabnet==4.0
-uvicorn==0.20.0
+pytorch-tabnet
+uvicorn
